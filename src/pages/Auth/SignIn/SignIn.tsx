@@ -1,5 +1,4 @@
 import React from 'react';
-import './SignIn.css';
 import womanImage from '../../../assets/images/woman.png';
 import AuthContainer from '../../../components/AuthContainer/AuthContainer';
 import { Avatar, Box, Button, Checkbox, FormControlLabel, Grid, Link, TextField, Typography } from '@mui/material';
