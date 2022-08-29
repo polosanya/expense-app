@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './assets/logos/logo.svg';
-import './App.css';
-import SignIn from './pages/Auth/SignIn/SignIn';
-import SignUp from './pages/Auth/SignUp/SignUp';
+import logo from '../../assets/logos/logo.svg';
+import './Auth.css';
+import SignIn from './SignIn/SignIn';
+import SignUp from './SignUp/SignUp';
 
-function App() {
+const Auth: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -59,4 +59,4 @@ function App() {
   );
 }
 
-export default App;
+export default Auth;
