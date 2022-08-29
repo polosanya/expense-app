@@ -1,5 +1,4 @@
 import React from 'react';
-import './SignIn.css';
 import womanImage from '../../../assets/images/woman.png';
 import AuthContainer from '../../../components/AuthContainer/AuthContainer';
 import { Box } from '@mui/material';
