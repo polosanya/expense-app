@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
-import { Grid, Box, BoxProps } from '@mui/material';
+import { Grid, Box, BoxProps, Link, LinkProps } from '@mui/material';
 import { styled } from '@mui/system';
-import LogoLink from '../LogoLink/LogoLink';
+import logo from 'assets/logos/logo.svg';
 
 type Props = {
     image: string
@@ -11,9 +11,11 @@ type Props = {
 const AuthContainer: FC<Props> = ({ image, children }) => {
     return (
         <Grid container>
-            <Grid item xs={6} container direction='column'>
-                <LogoLink />
+            <TopLogoLink href={process.env.REACT_APP_BASE_URL}>
+                <img src={logo} alt='Incode Group logo' />
+            </TopLogoLink>
 
+            <Grid item xs={6} container direction='column'>
                 <FormComponent>
                     {children}
                 </FormComponent>
@@ -30,14 +32,20 @@ type ImageComponentProps = {
     image: string;
 } & BoxProps
 
-const ImageComponent = styled((props: ImageComponentProps) => <Box {...props} />)(({ image }) => ({
+const ImageComponent = styled(Box)<ImageComponentProps>(({ image }) => ({
     backgroundImage: `url(${image})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     height: '100vh',
 }));
 
-const FormComponent = styled(Box)({
+const TopLogoLink = styled(Link)<LinkProps>({
+    position: 'absolute',
+    top: '48px',
+    left: '60px',
+});
+
+const FormComponent = styled(Box)<BoxProps>({
     display: 'flex',
     height: '100vh',
     justifyContent: 'center',

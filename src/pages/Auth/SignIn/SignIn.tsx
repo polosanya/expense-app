@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import womanImage from '../../../assets/images/woman.png';
 import AuthContainer from '../../../components/AuthContainer/AuthContainer';
-import Box from '@mui/material/Box'
+import { Box, BoxProps } from '@mui/material'
 import { styled } from '@mui/system';
 
 const SignIn: FC = () => {
@@ -14,7 +14,7 @@ const SignIn: FC = () => {
     )
 };
 
-const SignInComponent = styled(Box)(({ theme }) => ({
+const SignInComponent = styled(Box)<BoxProps>(({ theme }) => ({
     width: '330px',
     height: '400px',
     display: 'flex',
