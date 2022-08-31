@@ -1,14 +1,18 @@
-import React from 'react';
-import './Auth.css';
+import { FC } from 'react';
+import { styled } from '@mui/system';
 import SignIn from './SignIn/SignIn';
-// import SignUp from './SignUp/SignUp';
+import Box from '@mui/material/Box';
 
-const Auth: React.FC = () => {
+const Auth: FC = () => {
   return (
-    <div className="Auth">
-        <SignIn />
-    </div>
+    <AuthComponent>
+      <SignIn />
+    </AuthComponent>
   );
 }
+
+const AuthComponent = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.black,
+}));
 
 export default Auth;

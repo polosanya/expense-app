@@ -1,27 +1,28 @@
-import React from 'react';
+import { FC } from 'react';
 import womanImage from '../../../assets/images/woman.png';
 import AuthContainer from '../../../components/AuthContainer/AuthContainer';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box'
+import { styled } from '@mui/system';
 
-const SignIn: React.FC = () => {
+const SignIn: FC = () => {
     return (
         <AuthContainer image={womanImage}>
-            <Box sx={{
-                position: 'absolute',
-                left: 150,
-                top: 200,
-                width: 400,
-                height: 400,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: '50px',
-                backgroundColor: 'aqua',
-            }}>
+            <SignInComponent>
                 Sign In Form
-            </Box>
+            </SignInComponent>
         </AuthContainer>
     )
 };
+
+const SignInComponent = styled(Box)(({ theme }) => ({
+    width: '330px',
+    height: '400px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '50px',
+    backgroundColor: theme.palette.red,
+    color: theme.palette.white,
+}));
 
 export default SignIn;

@@ -1,46 +1,47 @@
-import React from 'react';
-import logo from '../../assets/logos/logo.svg';
-import { Box, Link } from '@mui/material';
+import { FC, ReactNode } from 'react';
+import { Grid, Box, BoxProps } from '@mui/material';
+import { styled } from '@mui/system';
+import LogoLink from '../LogoLink/LogoLink';
 
 type Props = {
     image: string
-    children: React.ReactNode
+    children: ReactNode
 }
 
-const AuthContainer: React.FC<Props> = ({ image, children }) => {
+const AuthContainer: FC<Props> = ({ image, children }) => {
     return (
-        <>
-            <Box
-                sx={{
-                    backgroundColor: '#1D283A',
-                    position: 'relative',
-                    height: '100vh',
-                }}
-            >
-                <Link href="https://www.incode-group.com/" sx={{
-                    position: 'absolute',
-                    left: 60,
-                    top: 48,
-                }}>
-                    <img src={logo} alt='Incode Group logo' />
-                </Link>
+        <Grid container>
+            <Grid item xs={6} container direction='column'>
+                <LogoLink />
 
-                <Box sx={{
-                    backgroundImage: `url(${image})`,
-                    backgroundRepeat: 'no-repeat',
-                    position: 'absolute',
-                    backgroundSize: 'cover',
-                    top: 0,
-                    right: 0,
-                    height: '100vh',
-                    width: '50%',
-                }}>
-                </Box>
-            </Box>
+                <FormComponent>
+                    {children}
+                </FormComponent>
+            </Grid>
 
-            {children}
-        </>
+            <Grid item xs={6} >
+                <ImageComponent image={image} />
+            </Grid>
+        </Grid >
     );
 };
+
+type ImageComponentProps = {
+    image: string;
+} & BoxProps
+
+const ImageComponent = styled((props: ImageComponentProps) => <Box {...props} />)(({ image }) => ({
+    backgroundImage: `url(${image})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: '100vh',
+}));
+
+const FormComponent = styled(Box)({
+    display: 'flex',
+    height: '100vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+});
 
 export default AuthContainer;

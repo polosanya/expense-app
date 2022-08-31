@@ -1,4 +1,4 @@
-import React from 'react';
+import { ThemeProvider } from '@mui/material';
 import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
@@ -7,15 +7,18 @@ import {
 } from "react-router-dom";
 import './index.css';
 import Auth from './pages/Auth/Auth';
+import { mainTheme } from './themes';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") || new HTMLElement
 );
 
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Auth />}></Route>
-    </Routes>
-  </BrowserRouter>
+  <ThemeProvider theme={mainTheme}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+      </Routes>
+    </BrowserRouter>
+  </ThemeProvider>
 );
