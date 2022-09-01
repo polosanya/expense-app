@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import womanImage from '../../../assets/images/woman.png';
 import AuthContainer from '../../../components/AuthContainer/AuthContainer';
-import { Typography, TypographyProps } from '@mui/material'
+import { Typography, TypographyProps, Box, BoxProps, FormControlLabel, Checkbox, Link, CheckboxProps, FormControlLabelProps } from '@mui/material'
 import { styled } from '@mui/system';
 import { InputUnstyled, InputUnstyledProps, ButtonUnstyled, ButtonUnstyledProps } from '@mui/base/';
 import { useFormik } from 'formik';
@@ -55,7 +55,7 @@ const SignIn: FC = () => {
                 {errors.email && touched.email && (
                     <Error>{errors.email}</Error>
                 )}
-            
+
 
                 <Label>Password</Label>
                 <Input
@@ -65,15 +65,32 @@ const SignIn: FC = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     endAdornment={
-                            <IconButton>
-                                <img src={eyeOff} />
-                            </IconButton>
+                        <IconButton>
+                            <img src={eyeOff} />
+                        </IconButton>
                     }
                 />
                 {errors.password && touched.password && (
                     <Error>{errors.password}</Error>
                 )}
+                <PasswordDetails>
+                    <CustomCheckboxLabel
+                        control={<CustomCheckbox value="remember" color="primary" />}
+                        label="Remember me"
+                    />
+                    <Link href={process.env.REACT_APP_BASE_URL}>
+                        Reset Password?
+                    </Link>
+                </PasswordDetails>
+
                 <ButtonPrimary type='submit' disabled={isSubmitting}>Login</ButtonPrimary>
+
+                <FormFooter component='span'>
+                    Don&apos;t have account yet?&nbsp;&nbsp;
+                    <Link href={process.env.REACT_APP_BASE_URL}>
+                        New Account
+                    </Link>
+                </FormFooter>
             </SignInForm>
         </AuthContainer>
     )
@@ -160,6 +177,30 @@ const IconButton = styled(ButtonUnstyled)<ButtonUnstyledProps>({
     ':hover': {
         cursor: 'pointer',
     }
+});
+
+const CustomCheckbox = styled(Checkbox)<CheckboxProps>(({ theme }) => ({
+    color: theme.palette.white,
+}));
+
+const CustomCheckboxLabel = styled(FormControlLabel)<FormControlLabelProps>(({ theme }) => ({
+    '& .MuiFormControlLabel-label': {
+        fontFamily: 'Montserrat, sans-serif',
+        color: theme.palette.bgr,
+    }
+}));
+
+const PasswordDetails = styled(Box)<BoxProps>({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+});
+
+const FormFooter = styled(Box)<BoxProps>({
+    textAlign: 'center',
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '12px',
+    fontWeight: '400',
 });
 
 export default SignIn;
