@@ -1,14 +1,29 @@
-import { FC } from 'react';
-import womanImage from '../../../assets/images/woman.png';
-import AuthContainer from '../../../components/AuthContainer/AuthContainer';
+import { FC, useState } from 'react';
+import womanImage from 'assets/images/woman.png';
+import AuthContainer from 'components/AuthContainer/AuthContainer';
 import { Typography, TypographyProps, Box, BoxProps, FormControlLabel, Checkbox, Link, CheckboxProps, FormControlLabelProps } from '@mui/material'
 import { styled } from '@mui/system';
 import { InputUnstyled, InputUnstyledProps, ButtonUnstyled, ButtonUnstyledProps } from '@mui/base/';
-import { useFormik } from 'formik';
+import { useFormik, FormikValues } from 'formik';
 import * as Yup from "yup";
-import eyeOff from '../../../assets/logos/eye-off.svg';
+import eyeOff from 'assets/logos/eye-off.svg';
+import eyeOn from 'assets/logos/eye-on.svg';
+import ButtonPrimary from 'components/ButtonPrimary/ButtonPrimary';
 
 const SignIn: FC = () => {
+    const [passwordIcon, setPasswordIcon] = useState(eyeOff);
+    const [passwordType, setPasswordType] = useState('password'); 
+
+    const changePasswordVisibility = () => {
+        if (passwordIcon === eyeOff) {
+            setPasswordIcon(eyeOn);
+            setPasswordType('text');
+        } else {
+            setPasswordIcon(eyeOff);
+            setPasswordType('password');
+        }
+    }
+
     const validationSchema = Yup.object({
         email: Yup.string().email().required(),
         password: Yup.string().min(8, 'Password too short').required()
@@ -19,12 +34,14 @@ const SignIn: FC = () => {
         password: '',
     };
 
+    const customHandleSubmit = (values: FormikValues) => {
+        console.log(values);
+    };
+
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: validationSchema,
-        onSubmit: (values) => {
-            console.log(values);
-        },
+        onSubmit: customHandleSubmit,
     })
 
     const {
@@ -60,13 +77,13 @@ const SignIn: FC = () => {
                 <Label>Password</Label>
                 <Input
                     name='password'
-                    type='password'
+                    type={passwordType}
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     endAdornment={
-                        <IconButton>
-                            <img src={eyeOff} />
+                        <IconButton onClick={changePasswordVisibility}>
+                            <img src={passwordIcon} />
                         </IconButton>
                     }
                 />
@@ -106,6 +123,7 @@ const SignInForm = styled('form')(({ theme }) => ({
 }));
 
 const Title = styled(Typography)<TypographyProps>({
+    fontFamily: 'Montserrat, sans-serif',
     fontSize: '56px',
     fontWeight: '700',
     textAlign: 'center',
@@ -145,24 +163,6 @@ const Input = styled(InputUnstyled)<InputUnstyledProps>(({ theme }) => ({
             outline: 0,
         }
     },
-}));
-
-const ButtonPrimary = styled(ButtonUnstyled)<ButtonUnstyledProps>(({ theme }) => ({
-    color: theme.palette.white,
-    backgroundColor: theme.palette.green.darker,
-    fontFamily: 'Montserrat, sans-serif',
-    fontWeight: 600,
-    fontSize: '16px',
-    padding: '9.5px',
-    borderRadius: '2px',
-    border: `1px solid ${theme.palette.green.darker}`,
-    ':hover': {
-        borderColor: theme.palette.green.main,
-    },
-    ':active': {
-        backgroundColor: theme.palette.green.main,
-        borderColor: theme.palette.bgr,
-    }
 }));
 
 const Error = styled(Typography)<TypographyProps>(({ theme }) => ({
