@@ -1,8 +1,9 @@
-import { Box, BoxProps, Checkbox, CheckboxProps, FormControlLabel, FormControlLabelProps, Link, Typography, TypographyProps } from '@mui/material';
+import { Box, BoxProps, Link, LinkProps, Typography, TypographyProps } from '@mui/material';
 import { styled } from '@mui/system';
 import womanImage from 'assets/images/woman.png';
 import AuthContainer from 'components/AuthContainer/AuthContainer';
 import ButtonPrimary from 'components/ButtonPrimary/ButtonPrimary';
+import { CustomCheckbox } from 'components/CustomCheckbox/CustomCheckbox';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
@@ -67,58 +68,21 @@ const SignIn: FC = () => {
                   message={errors.password}
                 />
 
-                {/* <Label>
-                    Email Address
-                </Label>
-                <Input
-                    name='email'
-                    type='text'
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                />
-                {errors.email && touched.email && (
-                    <Error>{errors.email}</Error>
-                )}
-
-
-                <Label>Password</Label>
-                <Input
-                    name='password'
-                    type={passwordType}
-                    value={values.password}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    endAdornment={
-                        <IconButton onClick={changePasswordVisibility}>
-                            {
-                                passwordType === 'password'
-                                  ? <EyeOffIcon />
-                                  : <EyeOnIcon />
-                            }
-                        </IconButton>
-                    }
-                />
-                {errors.password && touched.password && (
-                    <Error>{errors.password}</Error>
-                )} */}
                 <PasswordDetails>
-                    <CustomCheckboxLabel
-                        control={<CustomCheckbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
-                    <Link href={process.env.REACT_APP_BASE_URL}>
+                    <CustomCheckbox />
+        
+                    <CustomLink href={process.env.REACT_APP_BASE_URL}>
                         Reset Password?
-                    </Link>
+                    </CustomLink>
                 </PasswordDetails>
 
                 <ButtonPrimary type='submit' disabled={isSubmitting}>Login</ButtonPrimary>
 
                 <FormFooter component='span'>
                     Don&apos;t have account yet?&nbsp;&nbsp;
-                    <Link href={process.env.REACT_APP_BASE_URL}>
+                    <CustomLink href={process.env.REACT_APP_BASE_URL}>
                         New Account
-                    </Link>
+                    </CustomLink>
                 </FormFooter>
             </SignInForm>
         </AuthContainer>
@@ -129,7 +93,6 @@ const SignInForm = styled('form')(({ theme }) => ({
     width: '330px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '15px',
     color: theme.palette.white,
     fontFamily: 'Montserrat, sans-serif',
 }));
@@ -137,25 +100,17 @@ const SignInForm = styled('form')(({ theme }) => ({
 const Title = styled(Typography)<TypographyProps>({
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '56px',
+    lineHeight: '1',
     fontWeight: '700',
     textAlign: 'center',
+    paddingBottom: '32px',
 });
-
-const CustomCheckbox = styled(Checkbox)<CheckboxProps>(({ theme }) => ({
-    color: theme.palette.white,
-}));
-
-const CustomCheckboxLabel = styled(FormControlLabel)<FormControlLabelProps>(({ theme }) => ({
-    '& .MuiFormControlLabel-label': {
-        fontFamily: 'Montserrat, sans-serif',
-        color: theme.palette.bgr,
-    }
-}));
 
 const PasswordDetails = styled(Box)<BoxProps>({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingBottom: '32px',
 });
 
 const FormFooter = styled(Box)<BoxProps>({
@@ -163,6 +118,15 @@ const FormFooter = styled(Box)<BoxProps>({
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '12px',
     fontWeight: '400',
+    paddingTop: '24px',
 });
+
+const CustomLink = styled(Link)<LinkProps>(({ theme }) => ({
+    color: theme.palette.blue, 
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '12px',
+    fontWeight: '400', 
+    textDecoration: 'none',
+}));
 
 export default SignIn;

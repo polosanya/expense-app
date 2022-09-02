@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { Grid, Box, BoxProps, Link, LinkProps } from '@mui/material';
 import { styled } from '@mui/system';
-import logo from 'assets/logos/logo.svg';
+import logo from 'assets/icons/logo.svg';
 
 type Props = {
     image: string

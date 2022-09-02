@@ -1,10 +1,10 @@
 import { ButtonUnstyled, ButtonUnstyledProps } from '@mui/base';
+import { styled } from '@mui/system';
+import { ReactComponent as EyeOffSVG } from 'assets/icons/eye-off.svg';
+import { ReactComponent as EyeOnSVG } from 'assets/icons/eye-on.svg';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { PrimaryInputProps } from 'components/PrimaryInput/types';
 import { FC, useState } from 'react';
-import { ReactComponent as EyeOffSVG } from 'assets/logos/eye-off.svg';
-import { ReactComponent as EyeOnSVG } from 'assets/logos/eye-on.svg';
-import { styled } from '@mui/system';
 
 type PasswordInputProps = PrimaryInputProps;
 
