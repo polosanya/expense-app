@@ -49,7 +49,7 @@ const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ the
         color: theme.palette.white,
         border: 0,
         paddingLeft: '0',
-        width: '80%',
+        width: '100%',
         paddingBottom: '5px',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '16px',
