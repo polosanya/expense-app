@@ -8,7 +8,9 @@ import { Success } from './Success/Success';
 const Auth: FC = () => {
   return (
     <AuthComponent>
-      <Success />
+      <Success buttonLabel='Click me'>
+      Your password has been successfully changed
+      </Success>
     </AuthComponent>
   );
 }

@@ -6,16 +6,21 @@ import { styled } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
 import Typography, { TypographyProps } from '@mui/material/Typography'
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary'
+import { SuccessProps } from './types'
 
-export const Success: FC = () => {
+export const Success: FC<SuccessProps> = ({
+    children = 'Success!',
+    buttonLabel = '',
+    ...props
+}) => {
     return (
         <AuthContainer image={womanImage}>
             <StyledBox>
                 <StyledIcon />
                 <StyledCaption variant='h5'>
-                    Your password has been successfully changed
+                    {children}
                 </StyledCaption>
-                <ButtonPrimary onClick={() => {console.log('Click')}}>Login</ButtonPrimary>
+                {buttonLabel && <ButtonPrimary {...props}>{buttonLabel}</ButtonPrimary>}
             </StyledBox>
         </AuthContainer>
     )
@@ -38,7 +43,7 @@ const StyledIcon = styled(Box)<BoxProps>({
 
 const StyledCaption = styled(Typography)<TypographyProps>(({ theme }) => ({
     color: theme.palette.white,
-    width: '260px',
+    width: 'fit-content',
     textAlign: 'center',
     fontSize: '16px',
     fontWeight: '600',
