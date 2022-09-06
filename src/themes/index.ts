@@ -1,6 +1,20 @@
 import { createTheme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
+  interface Palette {
+    black: string;
+    violet: string;
+    blue: string;
+    orange: string;
+    red: string;
+    green: {
+      main: string;
+      darker: string;
+    }
+    white: string;
+    bgr: string;
+  }
+
   interface PaletteOptions {
     black: string;
     violet: string;

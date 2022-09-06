@@ -1,9 +1,10 @@
-import { Box, BoxProps, Link, LinkProps, Typography, TypographyProps } from '@mui/material';
+import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
 import { styled } from '@mui/system';
 import womanImage from 'assets/images/woman.png';
 import AuthContainer from 'components/AuthContainer/AuthContainer';
 import ButtonPrimary from 'components/ButtonPrimary/ButtonPrimary';
 import { CustomCheckbox } from 'components/CustomCheckbox/CustomCheckbox';
+import { CustomLink } from 'components/CustomLink/CustomLink';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
@@ -121,12 +122,12 @@ const FormFooter = styled(Box)<BoxProps>({
     paddingTop: '24px',
 });
 
-const CustomLink = styled(Link)<LinkProps>(({ theme }) => ({
-    color: theme.palette.blue, 
-    fontFamily: 'Montserrat, sans-serif',
-    fontSize: '12px',
-    fontWeight: '400', 
-    textDecoration: 'none',
-}));
+// const CustomLink = styled(Link)<LinkProps>(({ theme }) => ({
+//     color: theme.palette.blue, 
+//     fontFamily: 'Montserrat, sans-serif',
+//     fontSize: '12px',
+//     fontWeight: '400', 
+//     textDecoration: 'none',
+// }));
 
 export default SignIn;
