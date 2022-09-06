@@ -3,14 +3,13 @@ import { styled } from '@mui/material/styles';
 // import { SignIn } from './SignIn/SignIn';
 import { Box, BoxProps } from '@mui/material';
 // import { SignUp } from './SignUp/SignUp';
-import { Success } from './Success/Success';
+// import { Success } from './Success/Success';
+import { Reset } from './Reset/Reset';
 
 const Auth: FC = () => {
   return (
     <AuthComponent>
-      <Success buttonLabel='Click me'>
-      Your password has been successfully changed
-      </Success>
+      <Reset />
     </AuthComponent>
   );
 }
