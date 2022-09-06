@@ -4,12 +4,13 @@ import { styled } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/material';
 // import { SignUp } from './SignUp/SignUp';
 // import { Success } from './Success/Success';
-import { Reset } from './Reset/Reset';
+// import { Reset } from './Reset/Reset';
+import { NewPassword } from './NewPassword/NewPassword';
 
 const Auth: FC = () => {
   return (
     <AuthComponent>
-      <Reset />
+      <NewPassword />
     </AuthComponent>
   );
 }
