@@ -1,8 +1,8 @@
-import { InputUnstyled, InputUnstyledProps } from '@mui/base';
+import { InputUnstyled } from '@mui/base';
 import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { FC } from 'react';
-import { MessageProps, PrimaryInputProps } from './types';
+import { MessageProps, PrimaryInputProps, PrimaryInputStyledProps } from './types';
 import { PrimaryInputMessageType } from './utils';
 
 export const PrimaryInput: FC<PrimaryInputProps> = ({
@@ -15,7 +15,7 @@ export const PrimaryInput: FC<PrimaryInputProps> = ({
         <InputBox>
             {label && <Label>{label}</Label>}
 
-            <PrimaryInputStyled {...props} />
+            <PrimaryInputStyled isError={message.length > 0} {...props} />
 
             {message && <Message type={messageType} >{message}</Message>}
         </InputBox>
@@ -26,13 +26,18 @@ const InputBox = styled(Box)<BoxProps>({
     paddingBottom: '24px',
 });
 
-const PrimaryInputStyled = styled(InputUnstyled)<InputUnstyledProps>(({ theme }) => ({
-    borderBottom: '1px solid white',
+const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ theme, isError }) => ({
+    borderBottom: '1px solid',
+    borderColor: theme.palette.white,
     display: 'flex',
     justifyContent: 'space-between',
     '&:hover': {
         borderColor: theme.palette.green.main,
     },
+
+    ...(isError && {
+        borderColor: theme.palette.red,
+    }),
 
     '&.Mui-focused': {
         borderColor: theme.palette.green.darker,
@@ -52,6 +57,10 @@ const PrimaryInputStyled = styled(InputUnstyled)<InputUnstyledProps>(({ theme })
         lineHeight: '1.5',
         opacity: '0.7',
 
+        ...(isError && {
+            color: theme.palette.red,
+        }),
+
         '&::placeholder': {
             color: theme.palette.white
         },
@@ -59,6 +68,10 @@ const PrimaryInputStyled = styled(InputUnstyled)<InputUnstyledProps>(({ theme })
         //Style below prevents default Chrome styles while autofilling form
         '&:-webkit-autofill': {
             transition: 'background-color 600000s 0s, color 600000s 0s',
+            '-webkit-text-fill-color': theme.palette.white,
+            ...(isError && {
+                '-webkit-text-fill-color': theme.palette.red,
+            }),
         },
 
         '&:focus': {

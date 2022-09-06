@@ -11,3 +11,7 @@ export type PrimaryInputProps = InputUnstyledProps & {
 export type MessageProps = TypographyProps & {
     type: PrimaryInputMessageType;
 };
+
+export type PrimaryInputStyledProps = InputUnstyledProps & {
+    isError: boolean,
+};
