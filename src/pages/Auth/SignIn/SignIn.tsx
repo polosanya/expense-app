@@ -114,10 +114,11 @@ const PasswordDetails = styled(Box)<BoxProps>({
   paddingBottom: '32px',
 });
 
-const FormFooter = styled(Box)<BoxProps>({
+const FormFooter = styled(Box)<BoxProps>(({ theme }) => ({
   fontFamily: 'Montserrat, sans-serif',
   textAlign: 'center',
   fontSize: '12px',
   fontWeight: '400',
+  color: theme.palette.bgr,
   paddingTop: '24px',
-});
+}));

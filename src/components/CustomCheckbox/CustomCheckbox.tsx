@@ -27,6 +27,10 @@ const CustomCheckboxLabel = styled(FormControlLabel)<FormControlLabelProps>(({ t
         opacity: '0.8',
         fontSize: '12px',
         fontWeight: '400',
+
+        '&:hover': {
+            opacity: 1,
+        }
     }
 }));
 

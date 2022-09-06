@@ -9,7 +9,12 @@ export const CustomLink: FC<LinkProps> = (props) => {
 
 const StyledLink = styled(Link)<LinkProps>(({ theme }) => ({
     color: theme.palette.blue, 
+    opacity: '0.8',
     fontSize: '12px',
     fontWeight: '400', 
     textDecoration: 'none',
+
+    '&:hover': {
+        opacity: 1,
+    }
 }));
