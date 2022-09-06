@@ -57,6 +57,7 @@ export const SignIn: FC = () => {
                   onBlur={handleBlur}
                   messageType={PrimaryInputMessageType.Error}
                   message={errors.email}
+                  placeholder='example@gmail.com'
                 />
 
                 <PasswordInput
@@ -67,6 +68,7 @@ export const SignIn: FC = () => {
                   onBlur={handleBlur}
                   messageType={PrimaryInputMessageType.Error}
                   message={errors.password}
+                  placeholder='***************'
                 />
 
                 <PasswordDetails>

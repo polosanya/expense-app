@@ -52,6 +52,14 @@ const PrimaryInputStyled = styled(InputUnstyled)<InputUnstyledProps>(({ theme })
         lineHeight: '1.5',
         opacity: '0.7',
 
+        '&::placeholder': {
+            color: theme.palette.white
+        },
+
+        '&:-webkit-autofill': {
+            transition: 'background-color 600000s 0s, color 600000s 0s'
+        },
+
         '&:focus': {
             outline: 0,
         }
