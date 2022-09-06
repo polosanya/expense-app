@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Grid, Box, BoxProps, Link, LinkProps } from '@mui/material';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 import logo from 'assets/icons/logo.svg';
 import { AuthContainerProps, ImageComponentProps } from './types';
 

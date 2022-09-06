@@ -1,22 +1,28 @@
-import { Checkbox, CheckboxProps, Typography, TypographyProps } from '@mui/material';
+import { Checkbox, Typography, TypographyProps } from '@mui/material';
 import FormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel';
-import { styled } from '@mui/material';
-import uncheckedIcon from '../../assets/icons/unchecked.svg';
-import checkedIcon from '../../assets/icons/checked.svg';
+import { styled } from '@mui/material/styles';
 import { FC } from 'react';
+import checkedIcon from '../../assets/icons/checked.svg';
+import uncheckedIcon from '../../assets/icons/unchecked.svg';
+import { CustomCheckboxProps } from './types';
 
-export const CustomCheckbox: FC<CheckboxProps> = ({ ...props}) => {
+export const CustomCheckbox: FC<CustomCheckboxProps> = ({ label='', ...props }) => {
     return (
         <CustomCheckboxLabel
             control={<Checkbox {...props} icon={<UncheckedIcon />} checkedIcon={<CheckedIcon />} />}
-            label="Remember me"
+            label={label}
         />
     );
 };
 
 const CustomCheckboxLabel = styled(FormControlLabel)<FormControlLabelProps>(({ theme }) => ({
+    marginLeft: 0,
+
+    '& .MuiButtonBase-root': {
+        paddingLeft: 0,
+    },
+
     '& .MuiFormControlLabel-label': {
-        fontFamily: 'Montserrat, sans-serif',
         color: theme.palette.bgr,
         opacity: '0.8',
         fontSize: '12px',

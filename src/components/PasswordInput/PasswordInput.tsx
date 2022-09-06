@@ -1,5 +1,5 @@
 import { ButtonUnstyled, ButtonUnstyledProps } from '@mui/base';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 import { ReactComponent as EyeOffSVG } from 'assets/icons/eye-off.svg';
 import { ReactComponent as EyeOnSVG } from 'assets/icons/eye-on.svg';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
@@ -12,8 +12,6 @@ export const PasswordInput: FC<PrimaryInputProps> = (props) => {
     const handlePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-
-
 
     return (
         <PrimaryInput

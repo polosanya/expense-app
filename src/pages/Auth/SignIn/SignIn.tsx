@@ -1,5 +1,5 @@
 import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 import womanImage from 'assets/images/woman.png';
 import { AuthContainer } from 'components/AuthContainer/AuthContainer';
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
@@ -72,7 +72,7 @@ export const SignIn: FC = () => {
         />
 
         <PasswordDetails>
-          <CustomCheckbox />
+          <CustomCheckbox label='Remember me' />
 
           <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
             Reset Password?

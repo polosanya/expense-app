@@ -1,6 +1,6 @@
 import { InputUnstyled, InputUnstyledProps } from '@mui/base';
 import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 import { FC } from 'react';
 import { MessageProps, PrimaryInputProps } from './types';
 import { PrimaryInputMessageType } from './utils';
@@ -56,8 +56,9 @@ const PrimaryInputStyled = styled(InputUnstyled)<InputUnstyledProps>(({ theme })
             color: theme.palette.white
         },
 
+        //Style below prevents default Chrome styles while autofilling form
         '&:-webkit-autofill': {
-            transition: 'background-color 600000s 0s, color 600000s 0s'
+            transition: 'background-color 600000s 0s, color 600000s 0s',
         },
 
         '&:focus': {

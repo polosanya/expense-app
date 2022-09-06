@@ -1,12 +1,10 @@
 import ButtonUnstyled, { ButtonUnstyledProps } from '@mui/base/ButtonUnstyled';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 import { FC } from 'react';
 
-export const ButtonPrimary: FC<ButtonUnstyledProps> = ({ type, children, ...props }) => {
+export const ButtonPrimary: FC<ButtonUnstyledProps> = (props) => {
     return (
-        <ButtonPrimaryStyled type={type} {...props}>
-            {children}
-        </ButtonPrimaryStyled>
+        <ButtonPrimaryStyled {...props} />
     )
 };
 
