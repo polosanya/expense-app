@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { styled } from '@mui/material/styles';
-import { SignIn } from './SignIn/SignIn';
+// import { SignIn } from './SignIn/SignIn';
 import { Box, BoxProps } from '@mui/material';
+import { SignUp } from './SignUp/SignUp';
 
 const Auth: FC = () => {
   return (
     <AuthComponent>
-      <SignIn />
+      <SignUp />
     </AuthComponent>
   );
 }
