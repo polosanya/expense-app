@@ -1,8 +1,8 @@
 import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
 import { styled } from '@mui/system';
 import womanImage from 'assets/images/woman.png';
-import AuthContainer from 'components/AuthContainer/AuthContainer';
-import ButtonPrimary from 'components/ButtonPrimary/ButtonPrimary';
+import { AuthContainer } from 'components/AuthContainer/AuthContainer';
+import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import { CustomCheckbox } from 'components/CustomCheckbox/CustomCheckbox';
 import { CustomLink } from 'components/CustomLink/CustomLink';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
@@ -12,7 +12,7 @@ import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
 import * as Yup from "yup";
 
-const SignIn: FC = () => {
+export const SignIn: FC = () => {
     const validationSchema = Yup.object({
         email: Yup.string().email().required(),
         password: Yup.string().min(8, 'Password too short').required()
@@ -121,13 +121,3 @@ const FormFooter = styled(Box)<BoxProps>({
     fontWeight: '400',
     paddingTop: '24px',
 });
-
-// const CustomLink = styled(Link)<LinkProps>(({ theme }) => ({
-//     color: theme.palette.blue, 
-//     fontFamily: 'Montserrat, sans-serif',
-//     fontSize: '12px',
-//     fontWeight: '400', 
-//     textDecoration: 'none',
-// }));
-
-export default SignIn;

@@ -42,6 +42,6 @@ export const mainTheme = createTheme({
       darker: '#539713'
     },
     white: '#ffffff',
-    bgr: '#f1f2f1',
+    bgr: '#f5f5f5',
   },
 });

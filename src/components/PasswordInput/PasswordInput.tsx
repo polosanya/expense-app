@@ -6,9 +6,7 @@ import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { PrimaryInputProps } from 'components/PrimaryInput/types';
 import { FC, useState } from 'react';
 
-type PasswordInputProps = PrimaryInputProps;
-
-export const PasswordInput: FC<PasswordInputProps> = (props) => {
+export const PasswordInput: FC<PrimaryInputProps> = (props) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handlePasswordVisibility = () => {
