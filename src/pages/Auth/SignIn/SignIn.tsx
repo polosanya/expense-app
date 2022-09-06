@@ -1,10 +1,11 @@
-import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import womanImage from 'assets/images/woman.png';
 import { AuthContainer } from 'components/AuthContainer/AuthContainer';
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import { CustomCheckbox } from 'components/CustomCheckbox/CustomCheckbox';
 import { CustomLink } from 'components/CustomLink/CustomLink';
+import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
@@ -50,7 +51,7 @@ export const SignIn: FC = () => {
   return (
     <AuthContainer image={womanImage}>
       <SignInForm onSubmit={handleSubmit}>
-        <Title>SIGN IN</Title>
+        <CustomTitle>SIGN IN</CustomTitle>
 
         <PrimaryInput
           label='Email Address'
@@ -102,14 +103,6 @@ const SignInForm = styled('form')(({ theme }) => ({
   flexDirection: 'column',
   color: theme.palette.white,
 }));
-
-const Title = styled(Typography)<TypographyProps>({
-  fontSize: '56px',
-  lineHeight: '1',
-  fontWeight: '700',
-  textAlign: 'center',
-  paddingBottom: '32px',
-});
 
 const PasswordDetails = styled(Box)<BoxProps>({
   display: 'flex',
