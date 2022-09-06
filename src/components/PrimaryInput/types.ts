@@ -6,6 +6,7 @@ export type PrimaryInputProps = InputUnstyledProps & {
     label?: string,
     message?: string,
     messageType?: PrimaryInputMessageType,
+    touched?: boolean,
 };
 
 export type MessageProps = TypographyProps & {

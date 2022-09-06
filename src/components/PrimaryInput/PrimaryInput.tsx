@@ -9,15 +9,16 @@ export const PrimaryInput: FC<PrimaryInputProps> = ({
     label = '',
     messageType = PrimaryInputMessageType.Text,
     message = '',
+    touched = false,
     ...props
 }) => {
     return (
         <InputBox>
             {label && <Label>{label}</Label>}
 
-            <PrimaryInputStyled isError={message.length > 0} {...props} />
+            <PrimaryInputStyled isError={touched && message.length > 0} {...props} />
 
-            {message && <Message type={messageType} >{message}</Message>}
+            {touched && message && <Message type={messageType} >{message}</Message>}
         </InputBox>
     )
 };

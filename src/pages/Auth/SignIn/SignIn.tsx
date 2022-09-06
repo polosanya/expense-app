@@ -42,6 +42,7 @@ export const SignIn: FC = () => {
   const {
     values,
     errors,
+    touched,
     handleChange,
     handleBlur,
     handleSubmit,
@@ -62,6 +63,7 @@ export const SignIn: FC = () => {
           onBlur={handleBlur}
           messageType={PrimaryInputMessageType.Error}
           message={errors.email}
+          touched={touched.email}
           placeholder='example@gmail.com'
         />
 
@@ -73,6 +75,7 @@ export const SignIn: FC = () => {
           onBlur={handleBlur}
           messageType={PrimaryInputMessageType.Error}
           message={errors.password}
+          touched={touched.password}
           placeholder='***************'
         />
 

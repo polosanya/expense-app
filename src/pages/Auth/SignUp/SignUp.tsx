@@ -54,6 +54,7 @@ export const SignUp: FC = () => {
     const {
         values,
         errors,
+        touched,
         handleChange,
         handleBlur,
         handleSubmit,
@@ -74,6 +75,7 @@ export const SignUp: FC = () => {
                     onBlur={handleBlur}
                     messageType={PrimaryInputMessageType.Error}
                     message={errors.fullName}
+                    touched={touched.fullName}
                     placeholder='Example Name'
                 />
 
@@ -86,6 +88,7 @@ export const SignUp: FC = () => {
                     onBlur={handleBlur}
                     messageType={PrimaryInputMessageType.Error}
                     message={errors.userName}
+                    touched={touched.userName}
                     placeholder='Example1488'
                 />
 
@@ -98,6 +101,7 @@ export const SignUp: FC = () => {
                     onBlur={handleBlur}
                     messageType={PrimaryInputMessageType.Error}
                     message={errors.email}
+                    touched={touched.email}
                     placeholder='example@gmail.com'
                 />
 
@@ -109,6 +113,7 @@ export const SignUp: FC = () => {
                     onBlur={handleBlur}
                     messageType={PrimaryInputMessageType.Error}
                     message={errors.password}
+                    touched={touched.password}
                     placeholder='***************'
                 />
 
@@ -120,6 +125,7 @@ export const SignUp: FC = () => {
                     onBlur={handleBlur}
                     messageType={PrimaryInputMessageType.Error}
                     message={errors.confirmPassword}
+                    touched={touched.confirmPassword}
                     placeholder='***************'
                 />
 
