@@ -31,6 +31,9 @@ declare module '@mui/material/styles' {
 }
 
 export const mainTheme = createTheme({
+  typography: {
+    fontFamily: ['Montserrat', 'sans-serif'].join(',')
+  },
   palette: {
     black: '#1d283a',
     violet: '#d4ccf1',

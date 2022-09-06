@@ -9,7 +9,6 @@ export const CustomLink: FC<LinkProps> = (props) => {
 
 const StyledLink = styled(Link)<LinkProps>(({ theme }) => ({
     color: theme.palette.blue, 
-    fontFamily: 'Montserrat, sans-serif',
     fontSize: '12px',
     fontWeight: '400', 
     textDecoration: 'none',

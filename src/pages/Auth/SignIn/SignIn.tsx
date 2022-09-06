@@ -13,113 +13,111 @@ import { FC } from 'react';
 import * as Yup from "yup";
 
 export const SignIn: FC = () => {
-    const validationSchema = Yup.object({
-        email: Yup.string().email().required(),
-        password: Yup.string().min(8, 'Password too short').required()
-    });
+  const validationSchema = Yup.object({
+    email: Yup.string().email().required(),
+    password: Yup.string().min(8, 'Password too short').required()
+  });
 
-    const initialValues = {
-        email: '',
-        password: '',
-    };
+  const initialValues = {
+    email: '',
+    password: '',
+  };
 
-    const customHandleSubmit = (values: FormikValues) => {
-        console.log(values);
-    };
+  const customHandleSubmit = (values: FormikValues) => {
+    console.log(values);
+  };
 
-    const formik = useFormik({
-        initialValues: initialValues,
-        validationSchema: validationSchema,
-        validateOnChange: false,
-        onSubmit: customHandleSubmit,
-    })
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    validateOnChange: false,
+    onSubmit: customHandleSubmit,
+  })
 
-    const {
-        values,
-        errors,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-    } = formik;
+  const {
+    values,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+  } = formik;
 
-    return (
-        <AuthContainer image={womanImage}>
-            <SignInForm onSubmit={handleSubmit}>
-                <Title>SIGN IN</Title>
+  return (
+    <AuthContainer image={womanImage}>
+      <SignInForm onSubmit={handleSubmit}>
+        <Title>SIGN IN</Title>
 
-                <PrimaryInput 
-                  label='Email Address'
-                  name='email'
-                  type='text'
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  messageType={PrimaryInputMessageType.Error}
-                  message={errors.email}
-                  placeholder='example@gmail.com'
-                />
+        <PrimaryInput
+          label='Email Address'
+          name='email'
+          type='text'
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          messageType={PrimaryInputMessageType.Error}
+          message={errors.email}
+          placeholder='example@gmail.com'
+        />
 
-                <PasswordInput
-                  label='Password'
-                  name='password'
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  messageType={PrimaryInputMessageType.Error}
-                  message={errors.password}
-                  placeholder='***************'
-                />
+        <PasswordInput
+          label='Password'
+          name='password'
+          value={values.password}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          messageType={PrimaryInputMessageType.Error}
+          message={errors.password}
+          placeholder='***************'
+        />
 
-                <PasswordDetails>
-                    <CustomCheckbox />
-        
-                    <CustomLink href={process.env.REACT_APP_BASE_URL}>
-                        Reset Password?
-                    </CustomLink>
-                </PasswordDetails>
+        <PasswordDetails>
+          <CustomCheckbox />
 
-                <ButtonPrimary type='submit' disabled={isSubmitting}>Login</ButtonPrimary>
+          <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
+            Reset Password?
+          </CustomLink>
+        </PasswordDetails>
 
-                <FormFooter component='span'>
-                    Don&apos;t have account yet?&nbsp;&nbsp;
-                    <CustomLink href={process.env.REACT_APP_BASE_URL}>
-                        New Account
-                    </CustomLink>
-                </FormFooter>
-            </SignInForm>
-        </AuthContainer>
-    )
+        <ButtonPrimary type='submit' disabled={isSubmitting}>Login</ButtonPrimary>
+
+        <FormFooter>
+          Don&apos;t have account yet?&nbsp;&nbsp;
+          <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
+            New Account
+          </CustomLink>
+        </FormFooter>
+      </SignInForm>
+    </AuthContainer>
+  )
 };
 
 const SignInForm = styled('form')(({ theme }) => ({
-    width: '330px',
-    display: 'flex',
-    flexDirection: 'column',
-    color: theme.palette.white,
-    fontFamily: 'Montserrat, sans-serif',
+  width: '330px',
+  display: 'flex',
+  flexDirection: 'column',
+  color: theme.palette.white,
 }));
 
 const Title = styled(Typography)<TypographyProps>({
-    fontFamily: 'Montserrat, sans-serif',
-    fontSize: '56px',
-    lineHeight: '1',
-    fontWeight: '700',
-    textAlign: 'center',
-    paddingBottom: '32px',
+  fontSize: '56px',
+  lineHeight: '1',
+  fontWeight: '700',
+  textAlign: 'center',
+  paddingBottom: '32px',
 });
 
 const PasswordDetails = styled(Box)<BoxProps>({
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingBottom: '32px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  paddingBottom: '32px',
 });
 
 const FormFooter = styled(Box)<BoxProps>({
-    textAlign: 'center',
-    fontFamily: 'Montserrat, sans-serif',
-    fontSize: '12px',
-    fontWeight: '400',
-    paddingTop: '24px',
+  fontFamily: 'Montserrat, sans-serif',
+  textAlign: 'center',
+  fontSize: '12px',
+  fontWeight: '400',
+  paddingTop: '24px',
 });

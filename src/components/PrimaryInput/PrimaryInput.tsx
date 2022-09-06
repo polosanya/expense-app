@@ -69,14 +69,12 @@ const PrimaryInputStyled = styled(InputUnstyled)<InputUnstyledProps>(({ theme })
 const Label = styled(Typography)<TypographyProps>(({ theme }) => ({
     paddingBottom: '4px',
     color: theme.palette.white,
-    fontFamily: 'Montserrat, sans-serif',
     fontWeight: '400',
     fontSize: '14px',
 }));
 
 const Message = styled(Typography)<MessageProps>(({ theme, type }) => ({
     color: theme.palette.white,
-    fontFamily: 'Montserrat, sans-serif',
     fontWeight: '400',
     fontSize: '12px',
     position: 'absolute',
