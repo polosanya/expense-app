@@ -1,6 +1,20 @@
 import { createTheme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
+  interface Palette {
+    black: string;
+    violet: string;
+    blue: string;
+    orange: string;
+    red: string;
+    green: {
+      main: string;
+      darker: string;
+    }
+    white: string;
+    bgr: string;
+  }
+
   interface PaletteOptions {
     black: string;
     violet: string;
@@ -17,6 +31,9 @@ declare module '@mui/material/styles' {
 }
 
 export const mainTheme = createTheme({
+  typography: {
+    fontFamily: ['Montserrat', 'sans-serif'].join(',')
+  },
   palette: {
     black: '#1d283a',
     violet: '#d4ccf1',
@@ -28,6 +45,6 @@ export const mainTheme = createTheme({
       darker: '#539713'
     },
     white: '#ffffff',
-    bgr: '#f1f2f1',
+    bgr: '#f5f5f5',
   },
 });

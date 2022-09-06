@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { styled } from '@mui/system';
-import SignIn from './SignIn/SignIn';
+import { styled } from '@mui/material/styles';
+import { SignIn } from './SignIn/SignIn';
 import { Box, BoxProps } from '@mui/material';
 
 const Auth: FC = () => {

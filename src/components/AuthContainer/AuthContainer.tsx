@@ -1,14 +1,10 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { Grid, Box, BoxProps, Link, LinkProps } from '@mui/material';
-import { styled } from '@mui/system';
-import logo from 'assets/logos/logo.svg';
+import { styled } from '@mui/material/styles';
+import logo from 'assets/icons/logo.svg';
+import { AuthContainerProps, ImageComponentProps } from './types';
 
-type Props = {
-    image: string
-    children: ReactNode
-}
-
-const AuthContainer: FC<Props> = ({ image, children }) => {
+export const AuthContainer: FC<AuthContainerProps> = ({ image, children }) => {
     return (
         <Grid container>
             <TopLogoLink href={process.env.REACT_APP_BASE_URL}>
@@ -27,10 +23,6 @@ const AuthContainer: FC<Props> = ({ image, children }) => {
         </Grid >
     );
 };
-
-type ImageComponentProps = {
-    image: string;
-} & BoxProps
 
 const ImageComponent = styled(Box)<ImageComponentProps>(({ image }) => ({
     backgroundImage: `url(${image})`,
@@ -51,5 +43,3 @@ const FormComponent = styled(Box)<BoxProps>({
     justifyContent: 'center',
     alignItems: 'center',
 });
-
-export default AuthContainer;
