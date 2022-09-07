@@ -1,10 +1,8 @@
-import { Typography } from '@mui/material';
+import { Success } from 'pages/Auth/Success/Success';
 import { FC } from 'react';
 
 export const HomePage: FC = () => {
     return (
-        <Typography variant='h2'>
-            Welcome home
-        </Typography>
+        <Success />
     )
 }

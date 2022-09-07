@@ -1,9 +1,13 @@
 import { FC } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { ProtectedRouteProps } from './types';
 
-export const ProtectedRoute: FC<ProtectedRouteProps> = ({ user, children }) => {
+export const ProtectedRoute: FC<ProtectedRouteProps> = ({
+    user,
+    children,
+    redirectPath = '/sign-in',
+}) => {
     return user
-        ? <>{children}</>
-        : <Navigate to="/sign-in" replace />
+        ? children ? <>{children}</> : <Outlet />
+        : <Navigate to={redirectPath} replace />
 }
