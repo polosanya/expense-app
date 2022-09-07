@@ -5,10 +5,13 @@ import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import laptopImage from '../../../assets/images/laptop.png';
 import { validationSchema } from './schema';
 
 export const NewPassword: FC = () => {
+    const navigate = useNavigate();
+
     const initialValues = {
         password: '',
         confirmPassword: '',
@@ -16,6 +19,7 @@ export const NewPassword: FC = () => {
 
     const customHandleSubmit = (values: FormikValues) => {
         console.log(values);
+        navigate('/sign-in');
     };
 
     const formik = useFormik({
@@ -60,7 +64,7 @@ export const NewPassword: FC = () => {
                     onBlur={handleBlur}
                     messageType={'error'}
                     message={touched.confirmPassword ? errors.confirmPassword : ''}
-                    hasError={touched.password && !!errors.password}
+                    hasError={touched.confirmPassword && !!errors.confirmPassword}
                     placeholder='***************'
                 />
                 <ButtonPrimary type='submit' disabled={isSubmitting}>

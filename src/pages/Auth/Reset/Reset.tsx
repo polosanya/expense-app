@@ -6,16 +6,20 @@ import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import laptopImage from '../../../assets/images/laptop.png';
 import { validationSchema } from './schema';
 
 export const Reset: FC = () => {
+    const navigate = useNavigate();
+
     const initialValues = {
         email: '',
     };
 
     const customHandleSubmit = (values: FormikValues) => {
         console.log(values);
+        navigate('/new-password');
     };
 
     const formik = useFormik({

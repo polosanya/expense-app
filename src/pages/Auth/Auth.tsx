@@ -7,6 +7,7 @@ import { SignUp } from './SignUp/SignUp';
 // import { Reset } from './Reset/Reset';
 // import { NewPassword } from './NewPassword/NewPassword';
 
+// Probably don't need it now
 const Auth: FC = () => {
   return (
     <AuthComponent>

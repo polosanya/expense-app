@@ -10,9 +10,20 @@ import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { validationSchema } from './schema';
 
 export const SignIn: FC = () => {
+  const navigate = useNavigate();
+
+  const navigateToSignUp = () => {
+    navigate('/sign-up');
+  }
+
+  const navigateToReset = () => {
+    navigate('/reset');
+  }
+
   const initialValues = {
     email: '',
     password: '',
@@ -72,7 +83,7 @@ export const SignIn: FC = () => {
         <PasswordDetails>
           <CustomCheckbox labelComponent='Remember me' />
 
-          <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
+          <CustomLink onClick={navigateToReset} variant='h3'>
             Reset Password?
           </CustomLink>
         </PasswordDetails>
@@ -81,7 +92,7 @@ export const SignIn: FC = () => {
 
         <FormFooter>
           Don&apos;t have account yet?&nbsp;&nbsp;
-          <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
+          <CustomLink onClick={navigateToSignUp} variant='h3'>
             New Account
           </CustomLink>
         </FormFooter>

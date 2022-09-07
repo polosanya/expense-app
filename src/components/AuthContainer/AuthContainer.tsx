@@ -38,9 +38,10 @@ const TopLogoLink = styled(Link)<LinkProps>({
     left: '60px',
 });
 
-const FormComponent = styled(Box)<BoxProps>({
+const FormComponent = styled(Box)<BoxProps>(({ theme }) => ({
     display: 'flex',
     height: '100vh',
     justifyContent: 'center',
     alignItems: 'center',
-});
+    backgroundColor: theme.palette.black,
+}));

@@ -16,5 +16,6 @@ const StyledLink = styled(Link)<LinkProps>(({ theme }) => ({
 
     '&:hover': {
         opacity: 1,
+        cursor: 'pointer',
     }
 }));
