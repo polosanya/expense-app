@@ -8,21 +8,11 @@ import { CustomLink } from 'components/CustomLink/CustomLink';
 import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
-import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
-import * as Yup from "yup";
+import { validationSchema } from './schema';
 
 export const SignIn: FC = () => {
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email('Your email is not valid')
-      .required('Please enter your email'),
-    password: Yup.string()
-      .min(8, 'Password too short. Minimum 8 symbols required.')
-      .required('Please enter your password')
-  });
-
   const initialValues = {
     email: '',
     password: '',
@@ -61,9 +51,9 @@ export const SignIn: FC = () => {
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
-          messageType={PrimaryInputMessageType.Error}
-          message={errors.email}
-          touched={touched.email}
+          messageType={'error'}
+          message={touched.email ? errors.email : ''}
+          hasError={touched.email && !!errors.email}
           placeholder='example@gmail.com'
         />
 
@@ -73,14 +63,14 @@ export const SignIn: FC = () => {
           value={values.password}
           onChange={handleChange}
           onBlur={handleBlur}
-          messageType={PrimaryInputMessageType.Error}
-          message={errors.password}
-          touched={touched.password}
+          messageType={'error'}
+          message={touched.password ? errors.password : ''}
+          hasError={touched.password && !!errors.password}
           placeholder='***************'
         />
 
         <PasswordDetails>
-          <CustomCheckbox label='Remember me' />
+          <CustomCheckbox labelComponent='Remember me' />
 
           <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
             Reset Password?

@@ -4,19 +4,12 @@ import { AuthContainer } from 'components/AuthContainer/AuthContainer';
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
-import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
-import * as Yup from "yup";
 import laptopImage from '../../../assets/images/laptop.png';
+import { validationSchema } from './schema';
 
 export const Reset: FC = () => {
-    const validationSchema = Yup.object({
-        email: Yup.string()
-            .email('Your email is not valid')
-            .required('Please enter your email'),
-    });
-
     const initialValues = {
         email: '',
     };
@@ -58,9 +51,9 @@ export const Reset: FC = () => {
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.email}
-                    touched={touched.email}
+                    messageType={'error'}
+                    message={touched.email ? errors.email : ''}
+                    hasError={touched.email && !!errors.email}
                     placeholder='example@gmail.com'
                 />
 

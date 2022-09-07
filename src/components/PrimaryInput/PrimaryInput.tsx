@@ -3,22 +3,24 @@ import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { FC } from 'react';
 import { MessageProps, PrimaryInputProps, PrimaryInputStyledProps } from './types';
-import { PrimaryInputMessageType } from './utils';
 
 export const PrimaryInput: FC<PrimaryInputProps> = ({
     label = '',
-    messageType = PrimaryInputMessageType.Text,
+    messageType = 'info',
     message = '',
-    touched = false,
+    hasError = false,
     ...props
 }) => {
     return (
         <InputBox>
             {label && <Label>{label}</Label>}
 
-            <PrimaryInputStyled isError={touched && message.length > 0} {...props} />
+            <PrimaryInputStyled
+                hasError={hasError}
+                {...props}
+            />
 
-            {touched && message && <Message type={messageType} >{message}</Message>}
+            {message && <Message type={messageType} >{message}</Message>}
         </InputBox>
     )
 };
@@ -27,7 +29,7 @@ const InputBox = styled(Box)<BoxProps>({
     paddingBottom: '24px',
 });
 
-const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ theme, isError }) => ({
+const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ theme, hasError }) => ({
     borderBottom: '1px solid',
     borderColor: theme.palette.white,
     display: 'flex',
@@ -36,7 +38,7 @@ const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ the
         borderColor: theme.palette.green.main,
     },
 
-    ...(isError && {
+    ...(hasError && {
         borderColor: theme.palette.red,
     }),
 
@@ -58,7 +60,7 @@ const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ the
         lineHeight: '1.5',
         opacity: '0.7',
 
-        ...(isError && {
+        ...(hasError && {
             color: theme.palette.red,
         }),
 
@@ -70,7 +72,7 @@ const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ the
         '&:-webkit-autofill': {
             transition: 'background-color 600000s 0s, color 600000s 0s',
             '-webkit-text-fill-color': theme.palette.white,
-            ...(isError && {
+            ...(hasError && {
                 '-webkit-text-fill-color': theme.palette.red,
             }),
         },
@@ -95,7 +97,7 @@ const Message = styled(Typography)<MessageProps>(({ theme, type }) => ({
     position: 'absolute',
     paddingTop: '4px',
 
-    ...(type === PrimaryInputMessageType.Error && {
+    ...(type === 'error' && {
         color: theme.palette.red,
     }),
 }));

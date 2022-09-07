@@ -3,22 +3,12 @@ import { AuthContainer } from 'components/AuthContainer/AuthContainer';
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
-import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
-import * as Yup from "yup";
 import laptopImage from '../../../assets/images/laptop.png';
+import { validationSchema } from './schema';
 
 export const NewPassword: FC = () => {
-    const validationSchema = Yup.object({
-        password: Yup.string()
-            .min(8, 'Password too short. Minimum 8 symbols required.')
-            .required('Please enter your password'),
-        confirmPassword: Yup.string()
-            .required('Please confirm your password')
-            .oneOf([Yup.ref('password'), null], "Passwords don't match")
-    });
-
     const initialValues = {
         password: '',
         confirmPassword: '',
@@ -56,9 +46,9 @@ export const NewPassword: FC = () => {
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.password}
-                    touched={touched.password}
+                    messageType={'error'}
+                    message={touched.password ? errors.password : ''}
+                    hasError={touched.password && !!errors.password}
                     placeholder='***************'
                 />
 
@@ -68,9 +58,9 @@ export const NewPassword: FC = () => {
                     value={values.confirmPassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.confirmPassword}
-                    touched={touched.confirmPassword}
+                    messageType={'error'}
+                    message={touched.confirmPassword ? errors.confirmPassword : ''}
+                    hasError={touched.password && !!errors.password}
                     placeholder='***************'
                 />
                 <ButtonPrimary type='submit' disabled={isSubmitting}>

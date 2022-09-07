@@ -7,31 +7,12 @@ import { CustomLink } from 'components/CustomLink/CustomLink';
 import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
-import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
-import * as Yup from "yup";
 import duckImage from '../../../assets/images/duck.png';
+import { validationSchema } from './schema';
 
 export const SignUp: FC = () => {
-    const validationSchema = Yup.object({
-        fullName: Yup.string()
-            .required('Please enter your full name')
-            .max(35, 'Too long'),
-        userName: Yup.string()
-            .required('Please enter your user name')
-            .max(35, 'Too long'),
-        email: Yup.string()
-            .email('Your email is not valid')
-            .required('Please enter your email'),
-        password: Yup.string()
-            .min(8, 'Password too short. Minimum 8 symbols required.')
-            .required('Please enter your password'),
-        confirmPassword: Yup.string()
-            .required('Please confirm your password')
-            .oneOf([Yup.ref('password'), null], "Passwords don't match")
-    });
-
     const initialValues = {
         fullName: '',
         userName: '',
@@ -73,9 +54,9 @@ export const SignUp: FC = () => {
                     value={values.fullName}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.fullName}
-                    touched={touched.fullName}
+                    messageType={'error'}
+                    message={touched.fullName ? errors.fullName : ''}
+                    hasError={touched.fullName && !!errors.fullName}
                     placeholder='Example Name'
                 />
 
@@ -86,9 +67,9 @@ export const SignUp: FC = () => {
                     value={values.userName}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.userName}
-                    touched={touched.userName}
+                    messageType={'error'}
+                    message={touched.userName ? errors.userName : ''}
+                    hasError={touched.userName && !!errors.userName}
                     placeholder='Example1488'
                 />
 
@@ -99,9 +80,9 @@ export const SignUp: FC = () => {
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.email}
-                    touched={touched.email}
+                    messageType={'error'}
+                    message={touched.email ? errors.email : ''}
+                    hasError={touched.email && !!errors.email}
                     placeholder='example@gmail.com'
                 />
 
@@ -111,9 +92,9 @@ export const SignUp: FC = () => {
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.password}
-                    touched={touched.password}
+                    messageType={'error'}
+                    message={touched.password ? errors.password : ''}
+                    hasError={touched.password && !!errors.password}
                     placeholder='***************'
                 />
 
@@ -123,14 +104,14 @@ export const SignUp: FC = () => {
                     value={values.confirmPassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    messageType={PrimaryInputMessageType.Error}
-                    message={errors.confirmPassword}
-                    touched={touched.confirmPassword}
+                    messageType={'error'}
+                    message={touched.confirmPassword ? errors.confirmPassword : ''}
+                    hasError={touched.confirmPassword && !!errors.confirmPassword}
                     placeholder='***************'
                 />
 
                 <PasswordDetails>
-                    <CustomCheckbox label={(<>
+                    <CustomCheckbox labelComponent={(<>
                         By creating an account you agree to the&nbsp;
                         <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
                             terms of use
