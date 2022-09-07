@@ -9,10 +9,13 @@ import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import duckImage from '../../../assets/images/duck.png';
 import { validationSchema } from './schema';
 
 export const SignUp: FC = () => {
+    const navigate = useNavigate();
+
     const initialValues = {
         fullName: '',
         userName: '',
@@ -23,6 +26,7 @@ export const SignUp: FC = () => {
 
     const customHandleSubmit = (values: FormikValues) => {
         console.log(values);
+        navigate('/sign-in');
     };
 
     const formik = useFormik({

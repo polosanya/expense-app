@@ -31,6 +31,7 @@ export const SignIn: FC = () => {
 
   const customHandleSubmit = (values: FormikValues) => {
     console.log(values);
+    navigate('/home');
   };
 
   const formik = useFormik({

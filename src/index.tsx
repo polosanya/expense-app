@@ -4,6 +4,7 @@ import { Reset } from 'pages/Auth/Reset/Reset';
 import { SignIn } from 'pages/Auth/SignIn/SignIn';
 import { SignUp } from 'pages/Auth/SignUp/SignUp';
 import { Success } from 'pages/Auth/Success/Success';
+import { HomePage } from 'pages/Home/HomePage/HomePage';
 import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
@@ -29,6 +30,7 @@ root.render(
         <Route path="/reset" element={<Reset />} />
         <Route path="/new-password" element={<NewPassword />} />
         <Route path="*" element={<Navigate to='/sign-in' />} />
+        <Route path='/home' element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>
