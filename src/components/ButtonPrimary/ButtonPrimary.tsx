@@ -11,6 +11,7 @@ export const ButtonPrimary: FC<ButtonUnstyledProps> = (props) => {
 const ButtonPrimaryStyled = styled(ButtonUnstyled)<ButtonUnstyledProps>(({ theme }) => ({
     color: theme.palette.white,
     backgroundColor: theme.palette.green.darker,
+    width: '100%',
     fontFamily: 'Montserrat, sans-serif',
     fontWeight: 600,
     fontSize: '16px',

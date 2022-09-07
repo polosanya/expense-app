@@ -1,27 +1,18 @@
-import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import womanImage from 'assets/images/woman.png';
 import { AuthContainer } from 'components/AuthContainer/AuthContainer';
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import { CustomCheckbox } from 'components/CustomCheckbox/CustomCheckbox';
 import { CustomLink } from 'components/CustomLink/CustomLink';
+import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
-import { PrimaryInputMessageType } from 'components/PrimaryInput/utils';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
-import * as Yup from "yup";
+import { validationSchema } from './schema';
 
 export const SignIn: FC = () => {
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email('Your email is not valid')
-      .required('Please enter your email'),
-    password: Yup.string()
-      .min(8, 'Password too short. Minimum 8 symbols required.')
-      .required('Please enter your password')
-  });
-
   const initialValues = {
     email: '',
     password: '',
@@ -41,6 +32,7 @@ export const SignIn: FC = () => {
   const {
     values,
     errors,
+    touched,
     handleChange,
     handleBlur,
     handleSubmit,
@@ -50,7 +42,7 @@ export const SignIn: FC = () => {
   return (
     <AuthContainer image={womanImage}>
       <SignInForm onSubmit={handleSubmit}>
-        <Title>SIGN IN</Title>
+        <CustomTitle>SIGN IN</CustomTitle>
 
         <PrimaryInput
           label='Email Address'
@@ -59,8 +51,9 @@ export const SignIn: FC = () => {
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
-          messageType={PrimaryInputMessageType.Error}
-          message={errors.email}
+          messageType={'error'}
+          message={touched.email ? errors.email : ''}
+          hasError={touched.email && !!errors.email}
           placeholder='example@gmail.com'
         />
 
@@ -70,13 +63,14 @@ export const SignIn: FC = () => {
           value={values.password}
           onChange={handleChange}
           onBlur={handleBlur}
-          messageType={PrimaryInputMessageType.Error}
-          message={errors.password}
+          messageType={'error'}
+          message={touched.password ? errors.password : ''}
+          hasError={touched.password && !!errors.password}
           placeholder='***************'
         />
 
         <PasswordDetails>
-          <CustomCheckbox label='Remember me' />
+          <CustomCheckbox labelComponent='Remember me' />
 
           <CustomLink href={process.env.REACT_APP_BASE_URL} variant='h3'>
             Reset Password?
@@ -102,14 +96,6 @@ const SignInForm = styled('form')(({ theme }) => ({
   flexDirection: 'column',
   color: theme.palette.white,
 }));
-
-const Title = styled(Typography)<TypographyProps>({
-  fontSize: '56px',
-  lineHeight: '1',
-  fontWeight: '700',
-  textAlign: 'center',
-  paddingBottom: '32px',
-});
 
 const PasswordDetails = styled(Box)<BoxProps>({
   display: 'flex',

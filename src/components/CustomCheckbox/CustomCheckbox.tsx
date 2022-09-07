@@ -6,11 +6,11 @@ import checkedIcon from '../../assets/icons/checked.svg';
 import uncheckedIcon from '../../assets/icons/unchecked.svg';
 import { CustomCheckboxProps } from './types';
 
-export const CustomCheckbox: FC<CustomCheckboxProps> = ({ label='', ...props }) => {
+export const CustomCheckbox: FC<CustomCheckboxProps> = ({ labelComponent='', ...props }) => {
     return (
         <CustomCheckboxLabel
             control={<Checkbox {...props} icon={<UncheckedIcon />} checkedIcon={<CheckedIcon />} />}
-            label={label}
+            label={labelComponent}
         />
     );
 };
