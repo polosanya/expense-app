@@ -46,11 +46,11 @@ export const Reset: FC = () => {
       return (
         <AuthContainer image={laptopImage}>
           <ResetForm onSubmit={handleSubmit}>
-            <CustomTitle sx={{ fontSize: '48px' }}>
+            <StyledCustomTitle>
               RESET
               <br />
               PASSWORD
-            </CustomTitle>
+            </StyledCustomTitle>
             <StyledText variant="h5">
               Enter your email and we will send you an email with simple steps
               to reset your password and reset it
@@ -79,7 +79,11 @@ export const Reset: FC = () => {
       return <NewPassword changeScreen={setScreen} />
     case 'successScreen':
       return (
-        <Success buttonLabel="Login">Your account successfully created</Success>
+        <Success buttonLabel="Login">
+          Your password has been
+          <br />
+          successfully changed
+        </Success>
       )
   }
 }
@@ -88,6 +92,10 @@ const ResetForm = styled('form')({
   width: '330px',
   display: 'flex',
   flexDirection: 'column'
+})
+
+const StyledCustomTitle = styled(CustomTitle)({
+  fontSize: '48px'
 })
 
 const StyledText = styled(Typography)<TypographyProps>(({ theme }) => ({

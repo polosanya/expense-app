@@ -12,9 +12,10 @@ import { FC, useState } from 'react'
 import duckImage from '../../../assets/images/duck.png'
 import { Success } from '../Success/Success'
 import { validationSchema } from './schema'
+import { SignUpScreens } from './types'
 
 export const SignUp: FC = () => {
-  const [accountCreated, setAccountCreated] = useState(false)
+  const [screen, setScreen] = useState<SignUpScreens>('initialScreen')
 
   const initialValues = {
     fullName: '',
@@ -26,7 +27,7 @@ export const SignUp: FC = () => {
 
   const customHandleSubmit = (values: FormikValues) => {
     console.log(values)
-    setAccountCreated(true)
+    setScreen('successScreen')
   }
 
   const formik = useFormik({
@@ -46,101 +47,113 @@ export const SignUp: FC = () => {
     isSubmitting
   } = formik
 
-  return accountCreated ? (
-    <Success buttonLabel="Let's start">
-      Your account successfully created
-    </Success>
-  ) : (
-    <AuthContainer image={duckImage}>
-      <SignInForm onSubmit={handleSubmit}>
-        <CustomTitle>SIGN UP</CustomTitle>
+  switch (screen) {
+    case 'initialScreen':
+      return (
+        <AuthContainer image={duckImage}>
+          <SignInForm onSubmit={handleSubmit}>
+            <CustomTitle>SIGN UP</CustomTitle>
 
-        <PrimaryInput
-          label="Full Name"
-          name="fullName"
-          type="text"
-          value={values.fullName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          messageType={'error'}
-          message={touched.fullName ? errors.fullName : ''}
-          hasError={touched.fullName && !!errors.fullName}
-          placeholder="Example Name"
-        />
+            <PrimaryInput
+              label="Full Name"
+              name="fullName"
+              type="text"
+              value={values.fullName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              messageType={'error'}
+              message={touched.fullName ? errors.fullName : ''}
+              hasError={touched.fullName && !!errors.fullName}
+              placeholder="Example Name"
+            />
 
-        <PrimaryInput
-          label="User Name"
-          name="userName"
-          type="text"
-          value={values.userName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          messageType={'error'}
-          message={touched.userName ? errors.userName : ''}
-          hasError={touched.userName && !!errors.userName}
-          placeholder="Example1488"
-        />
+            <PrimaryInput
+              label="User Name"
+              name="userName"
+              type="text"
+              value={values.userName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              messageType={'error'}
+              message={touched.userName ? errors.userName : ''}
+              hasError={touched.userName && !!errors.userName}
+              placeholder="Example1488"
+            />
 
-        <PrimaryInput
-          label="Email Address"
-          name="email"
-          type="text"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          messageType={'error'}
-          message={touched.email ? errors.email : ''}
-          hasError={touched.email && !!errors.email}
-          placeholder="example@gmail.com"
-        />
+            <PrimaryInput
+              label="Email Address"
+              name="email"
+              type="text"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              messageType={'error'}
+              message={touched.email ? errors.email : ''}
+              hasError={touched.email && !!errors.email}
+              placeholder="example@gmail.com"
+            />
 
-        <PasswordInput
-          label="Password"
-          name="password"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          messageType={'error'}
-          message={touched.password ? errors.password : ''}
-          hasError={touched.password && !!errors.password}
-          placeholder="***************"
-        />
+            <PasswordInput
+              label="Password"
+              name="password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              messageType={'error'}
+              message={touched.password ? errors.password : ''}
+              hasError={touched.password && !!errors.password}
+              placeholder="***************"
+            />
 
-        <PasswordInput
-          label="Confirm Password"
-          name="confirmPassword"
-          value={values.confirmPassword}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          messageType={'error'}
-          message={touched.confirmPassword ? errors.confirmPassword : ''}
-          hasError={touched.confirmPassword && !!errors.confirmPassword}
-          placeholder="***************"
-        />
+            <PasswordInput
+              label="Confirm Password"
+              name="confirmPassword"
+              value={values.confirmPassword}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              messageType={'error'}
+              message={touched.confirmPassword ? errors.confirmPassword : ''}
+              hasError={touched.confirmPassword && !!errors.confirmPassword}
+              placeholder="***************"
+            />
 
-        <PasswordDetails>
-          <CustomCheckbox
-            labelComponent={
-              <>
-                By creating an account you agree to the&nbsp;
-                <CustomLink href={process.env.REACT_APP_BASE_URL} variant="h3">
-                  terms of use
-                </CustomLink>
-                &nbsp;and&nbsp;
-                <CustomLink href={process.env.REACT_APP_BASE_URL} variant="h3">
-                  our privacy policy.
-                </CustomLink>
-              </>
-            }
-          />
-        </PasswordDetails>
+            <PasswordDetails>
+              <CustomCheckbox
+                labelComponent={
+                  <>
+                    By creating an account you agree to the&nbsp;
+                    <CustomLink
+                      href={process.env.REACT_APP_BASE_URL}
+                      variant="h3"
+                    >
+                      terms of use
+                    </CustomLink>
+                    &nbsp;and&nbsp;
+                    <CustomLink
+                      href={process.env.REACT_APP_BASE_URL}
+                      variant="h3"
+                    >
+                      our privacy policy.
+                    </CustomLink>
+                  </>
+                }
+              />
+            </PasswordDetails>
 
-        <ButtonPrimary type="submit" disabled={isSubmitting}>
-          Sign Up
-        </ButtonPrimary>
-      </SignInForm>
-    </AuthContainer>
-  )
+            <ButtonPrimary type="submit" disabled={isSubmitting}>
+              Sign Up
+            </ButtonPrimary>
+          </SignInForm>
+        </AuthContainer>
+      )
+    case 'successScreen':
+      return (
+        <Success buttonLabel="Let's start">
+          Your account <br />
+          successfully created
+        </Success>
+      )
+  }
 }
 
 const SignInForm = styled('form')(({ theme }) => ({

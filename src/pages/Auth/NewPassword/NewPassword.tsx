@@ -40,11 +40,11 @@ export const NewPassword: FC<NewPasswordProps> = ({ changeScreen }) => {
   return (
     <AuthContainer image={laptopImage}>
       <ResetForm onSubmit={handleSubmit}>
-        <CustomTitle sx={{ fontSize: '48px' }}>
+        <StyledCustomTitle>
           RESET
           <br />
           PASSWORD
-        </CustomTitle>
+        </StyledCustomTitle>
 
         <PasswordInput
           label="Enter New Password"
@@ -81,4 +81,8 @@ const ResetForm = styled('form')({
   width: '330px',
   display: 'flex',
   flexDirection: 'column'
+})
+
+const StyledCustomTitle = styled(CustomTitle)({
+  fontSize: '48px'
 })
