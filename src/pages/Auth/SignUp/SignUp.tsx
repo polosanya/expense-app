@@ -26,7 +26,7 @@ export const SignUp: FC = () => {
 
     const customHandleSubmit = (values: FormikValues) => {
         console.log(values);
-        navigate('/sign-in');
+        navigate('/account-created');
     };
 
     const formik = useFormik({

@@ -1,11 +1,12 @@
-import { AuthContainer } from 'components/AuthContainer/AuthContainer'
-import { FC } from 'react'
-import womanImage from '../../../assets/images/woman.png'
-import successIcon from '../../../assets/icons/success.svg'
-import { styled } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
+import { styled } from '@mui/material/styles'
 import Typography, { TypographyProps } from '@mui/material/Typography'
+import { AuthContainer } from 'components/AuthContainer/AuthContainer'
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary'
+import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
+import successIcon from '../../../assets/icons/success.svg'
+import womanImage from '../../../assets/images/woman.png'
 import { SuccessProps } from './types'
 
 export const Success: FC<SuccessProps> = ({
@@ -13,6 +14,8 @@ export const Success: FC<SuccessProps> = ({
     buttonLabel = '',
     ...props
 }) => {
+    const navigate = useNavigate();
+
     return (
         <AuthContainer image={womanImage}>
             <StyledBox>
@@ -20,7 +23,12 @@ export const Success: FC<SuccessProps> = ({
                 <StyledCaption variant='h5'>
                     {children}
                 </StyledCaption>
-                {buttonLabel && <ButtonPrimary {...props}>{buttonLabel}</ButtonPrimary>}
+                {
+                    buttonLabel &&
+                    <ButtonPrimary onClick={() => navigate('sign-in')} {...props}>
+                        {buttonLabel}
+                    </ButtonPrimary>
+                }
             </StyledBox>
         </AuthContainer>
     )

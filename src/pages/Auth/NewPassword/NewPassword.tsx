@@ -19,7 +19,7 @@ export const NewPassword: FC = () => {
 
     const customHandleSubmit = (values: FormikValues) => {
         console.log(values);
-        navigate('/sign-in');
+        navigate('/password-restored');
     };
 
     const formik = useFormik({
