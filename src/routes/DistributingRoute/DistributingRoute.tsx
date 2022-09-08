@@ -1,7 +1,6 @@
 import { Box, BoxProps, Button, ButtonProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { NewPassword } from 'pages/Auth/NewPassword/NewPassword';
 import { Reset } from 'pages/Auth/Reset/Reset';
 import { SignIn } from 'pages/Auth/SignIn/SignIn';
 import { SignUp } from 'pages/Auth/SignUp/SignUp';
@@ -42,18 +41,12 @@ export const DistributingRoute: FC = () => {
                     }>
                         <Route path="/sign-in" element={<SignIn />} />
                         <Route path="/sign-up" element={<SignUp />} />
-                        <Route path="/account-created" element={
-                            <Success buttonLabel="Let's start">
-                                Your account successfully created
-                            </Success>
-                        } />
                         <Route path="/password-restored" element={
                             <Success buttonLabel='Login'>
                                 Your account successfully created
                             </Success>
                         } />
                         <Route path="/reset" element={<Reset />} />
-                        <Route path="/new-password" element={<NewPassword />} />
                         <Route path="*" element={<Navigate to='/sign-in' />} />
                     </Route>
 

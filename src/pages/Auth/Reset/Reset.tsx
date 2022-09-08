@@ -5,13 +5,15 @@ import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput';
 import { FormikValues, useFormik } from 'formik';
-import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { FC, useState } from 'react';
 import laptopImage from '../../../assets/images/laptop.png';
+import { NewPassword } from '../NewPassword/NewPassword';
+import { Success } from '../Success/Success';
 import { validationSchema } from './schema';
+import { ResetScreens } from './types';
 
 export const Reset: FC = () => {
-    const navigate = useNavigate();
+    const [screen, setScreen] = useState<ResetScreens>('initialScreen');
 
     const initialValues = {
         email: '',
@@ -19,7 +21,7 @@ export const Reset: FC = () => {
 
     const customHandleSubmit = (values: FormikValues) => {
         console.log(values);
-        navigate('/new-password');
+        setScreen('newPasswordScreen');
     };
 
     const formik = useFormik({
@@ -39,34 +41,44 @@ export const Reset: FC = () => {
         isSubmitting,
     } = formik;
 
-    return (
-        <AuthContainer image={laptopImage}>
-            <ResetForm onSubmit={handleSubmit}>
-                <CustomTitle sx={{fontSize: '48px'}}>RESET<br />PASSWORD</CustomTitle>
-                <StyledText variant='h5'>
-                    Enter your email and we will send you an email with simple steps
-                    to reset your password and reset it
-                </StyledText>
+    switch (screen) {
+        case 'initialScreen': return (
+            <AuthContainer image={laptopImage}>
+                <ResetForm onSubmit={handleSubmit}>
+                    <CustomTitle sx={{ fontSize: '48px' }}>RESET<br />PASSWORD</CustomTitle>
+                    <StyledText variant='h5'>
+                        Enter your email and we will send you an email with simple steps
+                        to reset your password and reset it
+                    </StyledText>
 
-                <PrimaryInput
-                    label='Email Address'
-                    name='email'
-                    type='text'
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    messageType={'error'}
-                    message={touched.email ? errors.email : ''}
-                    hasError={touched.email && !!errors.email}
-                    placeholder='example@gmail.com'
-                />
+                    <PrimaryInput
+                        label='Email Address'
+                        name='email'
+                        type='text'
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        messageType={'error'}
+                        message={touched.email ? errors.email : ''}
+                        hasError={touched.email && !!errors.email}
+                        placeholder='example@gmail.com'
+                    />
 
-                <ButtonPrimary type='submit' disabled={isSubmitting}>
-                    Reset Password
-                </ButtonPrimary>
-            </ResetForm>
-        </AuthContainer>
-    )
+                    <ButtonPrimary type='submit' disabled={isSubmitting}>
+                        Reset Password
+                    </ButtonPrimary>
+                </ResetForm>
+            </AuthContainer>
+        )
+        case 'newPasswordScreen': return (
+            <NewPassword changeScreen={setScreen} />
+        )
+        case 'successScreen': return (
+            <Success buttonLabel='Login'>
+                Your account successfully created
+            </Success>
+        )
+    }
 }
 
 const ResetForm = styled('form')({

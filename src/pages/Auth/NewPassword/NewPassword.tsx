@@ -5,12 +5,11 @@ import { CustomTitle } from 'components/CustomTitle/CustomTitle';
 import { PasswordInput } from 'components/PasswordInput/PasswordInput';
 import { FormikValues, useFormik } from 'formik';
 import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 import laptopImage from '../../../assets/images/laptop.png';
 import { validationSchema } from './schema';
+import { NewPasswordProps } from './types';
 
-export const NewPassword: FC = () => {
-    const navigate = useNavigate();
+export const NewPassword: FC<NewPasswordProps> = ({ changeScreen }) => {
 
     const initialValues = {
         password: '',
@@ -19,7 +18,7 @@ export const NewPassword: FC = () => {
 
     const customHandleSubmit = (values: FormikValues) => {
         console.log(values);
-        navigate('/password-restored');
+        changeScreen('successScreen');
     };
 
     const formik = useFormik({
