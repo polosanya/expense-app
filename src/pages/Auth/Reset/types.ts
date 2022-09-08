@@ -1,1 +1,4 @@
-export type ResetScreens = 'initialScreen' | 'newPasswordScreen' | 'successScreen';
+export type ResetScreens =
+  | 'initialScreen'
+  | 'newPasswordScreen'
+  | 'successScreen'

@@ -1,32 +1,32 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles'
 
 declare module '@mui/material/styles' {
   interface Palette {
-    black: string;
-    violet: string;
-    blue: string;
-    orange: string;
-    red: string;
+    black: string
+    violet: string
+    blue: string
+    orange: string
+    red: string
     green: {
-      main: string;
-      darker: string;
+      main: string
+      darker: string
     }
-    white: string;
-    bgr: string;
+    white: string
+    bgr: string
   }
 
   interface PaletteOptions {
-    black: string;
-    violet: string;
-    blue: string;
-    orange: string;
-    red: string;
+    black: string
+    violet: string
+    blue: string
+    orange: string
+    red: string
     green: {
-      main: string;
-      darker: string;
+      main: string
+      darker: string
     }
-    white: string;
-    bgr: string;
+    white: string
+    bgr: string
   }
 }
 
@@ -45,6 +45,6 @@ export const mainTheme = createTheme({
       darker: '#539713'
     },
     white: '#ffffff',
-    bgr: '#f5f5f5',
-  },
-});
+    bgr: '#f5f5f5'
+  }
+})

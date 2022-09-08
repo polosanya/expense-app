@@ -1,5 +1,5 @@
-import { ResetScreens } from "../Reset/types"
+import { ResetScreens } from '../Reset/types'
 
 export type NewPasswordProps = {
-    changeScreen: React.Dispatch<React.SetStateAction<ResetScreens>>
+  changeScreen: React.Dispatch<React.SetStateAction<ResetScreens>>
 }
