@@ -4,7 +4,6 @@ import { useLocalStorage } from 'hooks/useLocalStorage';
 import { Reset } from 'pages/Auth/Reset/Reset';
 import { SignIn } from 'pages/Auth/SignIn/SignIn';
 import { SignUp } from 'pages/Auth/SignUp/SignUp';
-import { Success } from 'pages/Auth/Success/Success';
 import { HomePage } from 'pages/Home/HomePage/HomePage';
 import { FC } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
@@ -41,11 +40,6 @@ export const DistributingRoute: FC = () => {
                     }>
                         <Route path="/sign-in" element={<SignIn />} />
                         <Route path="/sign-up" element={<SignUp />} />
-                        <Route path="/password-restored" element={
-                            <Success buttonLabel='Login'>
-                                Your account successfully created
-                            </Success>
-                        } />
                         <Route path="/reset" element={<Reset />} />
                         <Route path="*" element={<Navigate to='/sign-in' />} />
                     </Route>
@@ -55,8 +49,6 @@ export const DistributingRoute: FC = () => {
                     }>
                         <Route path="/home" element={<HomePage />} />
                     </Route>
-
-                    {/* <Route path='*' element={<Navigate to={user ? '/home' : '/auth'} />} /> */}
                 </Routes>
             </BrowserRouter>
         </AuthComponent>
