@@ -3,10 +3,9 @@ import { ReactNode } from "react";
 export type User = null | {
     id: number,
     name: string,
-    logout: (value: User | ((val: User) => User)) => void
 }
 
-export type ProtectedRouteProps = {
+export type PublicRouteProps = {
     children?: ReactNode;
     user: User;
     redirectPath?: string;

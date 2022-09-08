@@ -29,7 +29,9 @@ const InputBox = styled(Box)<BoxProps>({
     paddingBottom: '24px',
 });
 
-const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ theme, hasError }) => ({
+const PrimaryInputStyled = styled(InputUnstyled, {
+    shouldForwardProp: prop => prop !== 'hasError', 
+  })<PrimaryInputStyledProps>(({ theme, hasError }) => ({
     borderBottom: '1px solid',
     borderColor: theme.palette.white,
     display: 'flex',
@@ -71,9 +73,9 @@ const PrimaryInputStyled = styled(InputUnstyled)<PrimaryInputStyledProps>(({ the
         //Style below prevents default Chrome styles while autofilling form
         '&:-webkit-autofill': {
             transition: 'background-color 600000s 0s, color 600000s 0s',
-            '-webkit-text-fill-color': theme.palette.white,
+            WebkitTextFillColor: theme.palette.white,
             ...(hasError && {
-                '-webkit-text-fill-color': theme.palette.red,
+                WebkitTextFillColor: theme.palette.red,
             }),
         },
 

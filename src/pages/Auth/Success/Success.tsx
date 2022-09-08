@@ -25,7 +25,7 @@ export const Success: FC<SuccessProps> = ({
                 </StyledCaption>
                 {
                     buttonLabel &&
-                    <ButtonPrimary onClick={() => navigate('sign-in')} {...props}>
+                    <ButtonPrimary onClick={() => navigate('/sign-in')} {...props}>
                         {buttonLabel}
                     </ButtonPrimary>
                 }

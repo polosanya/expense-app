@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { ProtectedRouteProps } from './types';
+import { PrivateRouteProps } from './types';
 
-export const ProtectedRoute: FC<ProtectedRouteProps> = ({
+export const PrivateRoute: FC<PrivateRouteProps> = ({
     user,
     children,
     redirectPath = '/sign-in',
