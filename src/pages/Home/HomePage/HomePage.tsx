@@ -1,6 +1,10 @@
+import { clearUser } from 'app/store'
 import { Success } from 'pages/Auth/Success/Success'
 import { FC } from 'react'
+import { useDispatch } from 'react-redux'
 
 export const HomePage: FC = () => {
-  return <Success />
+  const dispatch = useDispatch()
+
+  return <Success buttonLabel="Logout" onClick={() => dispatch(clearUser())} />
 }

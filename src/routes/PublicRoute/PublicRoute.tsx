@@ -7,11 +7,7 @@ export const PublicRoute: FC<PublicRouteProps> = ({
   children,
   redirectPath = '/home'
 }) => {
-  return user ? (
-    <Navigate to={redirectPath} replace />
-  ) : children ? (
-    <>{children}</>
-  ) : (
-    <Outlet />
-  )
+  if (user) return <Navigate to={redirectPath} replace />
+
+  return children ? <>{children}</> : <Outlet />
 }

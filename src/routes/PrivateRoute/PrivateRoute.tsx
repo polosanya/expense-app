@@ -7,13 +7,7 @@ export const PrivateRoute: FC<PrivateRouteProps> = ({
   children,
   redirectPath = '/sign-in'
 }) => {
-  return user ? (
-    children ? (
-      <>{children}</>
-    ) : (
-      <Outlet />
-    )
-  ) : (
-    <Navigate to={redirectPath} replace />
-  )
+  if (!user) return <Navigate to={redirectPath} replace />
+
+  return children ? <>{children}</> : <Outlet />
 }

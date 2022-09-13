@@ -1,5 +1,6 @@
 import { Box, BoxProps } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { setUser } from 'app/store'
 import womanImage from 'assets/images/woman.png'
 import { AuthContainer } from 'components/AuthContainer/AuthContainer'
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary'
@@ -10,10 +11,13 @@ import { PasswordInput } from 'components/PasswordInput/PasswordInput'
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput'
 import { FormikValues, useFormik } from 'formik'
 import { FC } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { validationSchema } from './schema'
 
 export const SignIn: FC = () => {
+  const dispatch = useDispatch()
+
   const navigate = useNavigate()
 
   const navigateToSignUp = () => {
@@ -31,7 +35,7 @@ export const SignIn: FC = () => {
 
   const customHandleSubmit = (values: FormikValues) => {
     console.log(values)
-    navigate('/home')
+    dispatch(setUser({ name: 'User created', id: 2 }))
   }
 
   const formik = useFormik({
