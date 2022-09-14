@@ -23,7 +23,16 @@ export const DistributingRoute: FC = () => {
         </StyledButton>
       ) : (
         <StyledButton
-          onClick={() => dispatch(setUser({ id: 1, name: 'User' }))}
+          onClick={() =>
+            dispatch(
+              setUser({
+                id: 2,
+                username: 'test',
+                displayName: 'Test User',
+                admin: false
+              })
+            )
+          }
         >
           Sign In
         </StyledButton>

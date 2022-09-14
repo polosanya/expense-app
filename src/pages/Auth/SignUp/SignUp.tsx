@@ -1,5 +1,6 @@
 import { Box, BoxProps } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { useAppDispatch } from 'app/hooks'
 import { AuthContainer } from 'components/AuthContainer/AuthContainer'
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary'
 import { CustomCheckbox } from 'components/CustomCheckbox/CustomCheckbox'
@@ -7,6 +8,7 @@ import { CustomLink } from 'components/CustomLink/CustomLink'
 import { CustomTitle } from 'components/CustomTitle/CustomTitle'
 import { PasswordInput } from 'components/PasswordInput/PasswordInput'
 import { PrimaryInput } from 'components/PrimaryInput/PrimaryInput'
+import { signUp } from 'features/register/registerSlice'
 import { FormikValues, useFormik } from 'formik'
 import { FC, useState } from 'react'
 import duckImage from '../../../assets/images/duck.png'
@@ -16,6 +18,7 @@ import { SignUpScreens } from './types'
 
 export const SignUp: FC = () => {
   const [screen, setScreen] = useState<SignUpScreens>('initialScreen')
+  const dispatch = useAppDispatch()
 
   const initialValues = {
     fullName: '',
@@ -25,8 +28,14 @@ export const SignUp: FC = () => {
     confirmPassword: ''
   }
 
-  const customHandleSubmit = (values: FormikValues) => {
-    console.log(values)
+  const customHandleSubmit = async (values: FormikValues) => {
+    const requestData = {
+      password: values.confirmPassword,
+      username: values.userName,
+      displayName: values.fullName
+    }
+    const { payload } = await dispatch(signUp(requestData))
+    console.log(payload)
     setScreen('successScreen')
   }
 

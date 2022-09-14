@@ -3,7 +3,9 @@ import { RootState } from 'app/store'
 
 export type User = {
   id: number
-  name: string
+  username: string
+  displayName: string
+  admin: boolean
 } | null
 
 type LoginState = {

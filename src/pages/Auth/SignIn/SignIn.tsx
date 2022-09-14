@@ -35,7 +35,14 @@ export const SignIn: FC = () => {
 
   const customHandleSubmit = (values: FormikValues) => {
     console.log(values)
-    dispatch(setUser({ name: 'User created', id: 2 }))
+    dispatch(
+      setUser({
+        id: 1,
+        username: 'test',
+        displayName: 'Test User',
+        admin: false
+      })
+    )
   }
 
   const formik = useFormik({
