@@ -1,4 +1,4 @@
-import { User } from 'app/store'
+import { User } from 'features/login/loginSlice'
 import { ReactNode } from 'react'
 
 export type PrivateRouteProps = {

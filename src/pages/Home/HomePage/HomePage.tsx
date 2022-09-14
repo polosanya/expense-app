@@ -1,4 +1,4 @@
-import { clearUser } from 'app/store'
+import { clearUser } from 'features/login/loginSlice'
 import { Success } from 'pages/Auth/Success/Success'
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
