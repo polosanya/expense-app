@@ -1,19 +1,19 @@
-import { InputUnstyledProps } from '@mui/base/InputUnstyled';
-import { TypographyProps } from '@mui/material';
+import { InputUnstyledProps } from '@mui/base/InputUnstyled'
+import { TypographyProps } from '@mui/material'
 
 export type PrimaryInputProps = InputUnstyledProps & {
-    label?: string,
-    message?: string,
-    messageType?: PrimaryInputMessageType,
-    hasError?: boolean,
-};
+  label?: string
+  message?: string
+  messageType?: PrimaryInputMessageType
+  hasError?: boolean
+}
 
 export type MessageProps = TypographyProps & {
-    type: PrimaryInputMessageType;
-};
+  type: PrimaryInputMessageType
+}
 
-export type PrimaryInputMessageType = 'info' | 'error';
+export type PrimaryInputMessageType = 'info' | 'error'
 
 export type PrimaryInputStyledProps = InputUnstyledProps & {
-    hasError: boolean,
-};
+  hasError: boolean
+}
